@@ -8,11 +8,11 @@ app = FastAPI()
 async def root():
     return {"Hello": "World"}
 
-@app.get("/helloworld")            # sem barra final
+@app.get("/helloworld")
 async def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
 
-@app.get("/funcaoteste")           # sem barra final
+@app.get("/funcaoteste")
 async def funcaoteste():
     return {"teste": True, "num_aleatorio": random.randint(0, 1000)}
 
