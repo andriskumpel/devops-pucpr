@@ -1,8 +1,6 @@
-FROM alpine:latest
-
-RUN echo '#!/bin/sh' > /app.sh && \
-    echo 'echo "Aplicação rodando dentro do container!"' >> /app.sh
-
-RUN chmod +x /app.sh
-
-CMD ["/app.sh"]
+FROM python:3.12-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
